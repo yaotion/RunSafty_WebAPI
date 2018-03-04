@@ -1,0 +1,299 @@
+﻿using System;
+using System.Collections;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using System.Xml.Linq;
+using System.Data.SqlClient;
+using System.Text;
+using ThinkFreely.DBUtility;
+using System.IO;
+
+namespace TF.RunSaftyAPI.App_Api.Public.PUBJieShi
+{
+    /// <summary>
+    /// 1.10	获取公布揭示文件信息
+    /// 
+    ///   2014-06  
+    ///   by Mr.Tang
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    public class PUBJieShi : IHttpHandler
+    {
+        string sRequest = "";
+
+        string strcid = ""; 
+
+        public void ProcessRequest(HttpContext context)
+        {
+            try
+            {
+                string strQuery = context.Request.QueryString.ToString().ToLower().ToLower();
+                if (strQuery == "help" || strQuery == "h") //帮助
+                {
+                    sRequest += gotoHelp();
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(context.Request["cid"]))
+                    sRequest += sRetErrJSON("cid不能为空");
+                else
+                {
+                    strcid = context.Request["cid"];
+                    sRequest += gotoJieShiList();
+                }
+            }
+            finally
+            {
+                context.Response.ContentType = "text/plain";
+                context.Response.Write(sRequest);
+            }
+        }
+
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+         /// <summary>
+        ///1.10	获取公布揭示文件信息
+        /// </summary>
+        /// <returns></returns>
+        private string gotoJieShiList()
+        {
+
+            /// 第1步查询. TAB_Base_TrainJiaoluInSite
+            string strSql = "";
+            strSql = "SELECT strTrainJiaoluGUID FROM TAB_Base_TrainJiaoluInSite WHERE (strSiteGUID = '" + strcid + "')";
+
+            DataTable dt = SqlHelper.ExecuteDataset(SqlHelper.ConnString, CommandType.Text, strSql).Tables[0];
+            if (dt.Rows.Count < 1)
+                return sRetErrJSON("没有找到该cid对应信息");
+
+            //int xJ = 0;
+            Hashtable htJson = new Hashtable(); //放入JSON结果
+            DataTable topTable = MakeTopTable();
+            
+            //DataRow[] allFoundRows;
+            int y = dt.Rows.Count - 1;
+            for (int x = 0; x <= y; x++)
+            {
+                /// 第2步查询. VIEW_Base_TrainJiaolu_Section
+                /// 
+                string strTrainJiaoluGUID = dt.Rows[x]["strTrainJiaoluGUID"].ToString();
+                string strSql1 = "SELECT strSectionID FROM VIEW_Base_TrainJiaolu_Section WHERE strTrainJiaoluGUID ='" + strTrainJiaoluGUID + "'";
+
+                DataTable dt1 = SqlHelper.ExecuteDataset(SqlHelper.ConnString, CommandType.Text, strSql1).Tables[0];
+                if (dt1.Rows.Count < 1)
+                    continue;
+
+                int _y = dt1.Rows.Count - 1;
+                for (int _x = 0; _x <= _y; _x++)
+                {
+                    /// 第3步查询. VIEW_PUBJieShi_File
+                    /// 
+                    string strSectionID = dt1.Rows[_x]["strSectionID"].ToString();
+                    string strSql2 = "SELECT * FROM VIEW_PUBJieShi_File WHERE (strSectionGUID = '" + strSectionID + "')";
+
+                    DataTable dt2 = SqlHelper.ExecuteDataset(SqlHelper.ConnString, CommandType.Text, strSql2).Tables[0];
+                    if (dt2.Rows.Count < 1)
+                        continue;
+
+                    foreach (DataRow drs in dt2.Rows)
+                    {
+                        DataRow row = topTable.NewRow();    //所有查询到的记录都加入topTable
+                        //strSectionGUID, strPUBJieShiGUID, strFileName, dtUpTime, nFileSize, strTitle
+                        row["strSectionGUID"] = drs["strSectionGUID"];
+                        row["strPUBJieShiGUID"] = drs["strPUBJieShiGUID"];
+                        row["strFileName"] = drs["strFileName"];
+                        row["dtUpTime"] = drs["dtUpTime"];
+                        row["nFileSize"] = drs["nFileSize"];
+                        row["strTitle"] = drs["strTitle"];
+                        row["strOrginName"] = drs["strOrginName"];
+                        topTable.Rows.Add(row);
+                    } 
+                }
+            }
+            if (topTable.Rows.Count < 1)
+                return sRetErrJSON("没有找到该cid对应信息");
+
+            int xJ = 0;
+            string sSjson = "";
+            Hashtable ht = new Hashtable();
+
+            int _iCount = topTable.Rows.Count - 1;
+            for (int _iX = 0; _iX <= _iCount; _iX++)
+            {
+                string strJson = "";
+                //合并  取第一条strPUBJieShiGUID相同的行中的列
+                //strSectionGUID, strPUBJieShiGUID, strFileName, dtUpTime, nFileSize, strTitle
+                string strPUBJieShiGUID = topTable.Rows[_iX]["strPUBJieShiGUID"].ToString();
+                string strTitle = topTable.Rows[_iX]["strTitle"].ToString();
+                string strFileName = topTable.Rows[_iX]["strFileName"].ToString();
+                string nFileSize = topTable.Rows[_iX]["nFileSize"].ToString();
+                string strOrginName = topTable.Rows[_iX]["strOrginName"].ToString();
+                //转换时间格式
+
+                string dtUpTime = topTable.Rows[_iX]["dtUpTime"].ToString();
+                DateTime dtTime;
+                if (!string.IsNullOrEmpty(dtUpTime))
+                {
+                    dtTime = Convert.ToDateTime(dtUpTime);
+                    dtUpTime = dtTime.ToString("yyyy-MM-dd HH:mm:ss");
+                }
+
+                string strSectionGUID = topTable.Rows[_iX]["strSectionGUID"].ToString();
+
+                sSjson = "";
+
+                //二次检查strPUBJieShiGUID有两个以上相同
+                DataRow[] foundRows = null;
+                foundRows = topTable.Select("strPUBJieShiGUID='" + strPUBJieShiGUID + "'");
+
+                if (ht.Contains(strPUBJieShiGUID))      //如果已存在,跳出
+                    continue;
+
+                if (foundRows.Length > 1)
+                {
+                    ht.Add(strPUBJieShiGUID, strPUBJieShiGUID); //加入留作验证
+                    int b = foundRows.Length-1;
+                    for (int a = 0; a <= b; a++)
+                    {
+                        sSjson += "{\"sectionID\":\"" + foundRows[a]["strSectionGUID"] + "\"}";
+                        if (a < b)  //加分号
+                            sSjson += ",";
+                    }
+                }
+                else
+                {
+                    sSjson += "{\"sectionID\":\"" + strSectionGUID + "\"}";
+                }
+                //组织json对象数据
+                strJson += "{\"strPUBJieShiGUID\":\"" + strPUBJieShiGUID + "\",\"strTitle\":\"" + strTitle
+                    + "\",\"strFileName\":\"" + strFileName + "\",\"nFileSize\":\"" + nFileSize
+                    + "\",\"dtUpTime\":\"" + dtUpTime + "\",\"strOrginName\":\"" + strOrginName + "\",\"sectionList\":[";
+                strJson += sSjson;
+                strJson += "]}";
+
+                htJson.Add(xJ++, strJson);
+            }
+
+            //组织最终返回的JSON
+            StringBuilder sb = new StringBuilder();
+            sb.Append("{\"result\":0,\"resultStr\":\"返回成功\",\"pubJieShiList\":[");
+
+            int K = htJson.Count - 1;
+            for (int J = 0; J <= K; J++)
+            {
+                if (J < K)  //加分号
+                    sb.Append(htJson[J]+",");
+                else
+                    sb.Append(htJson[J]); 
+            }
+
+            sb.Append("]}");
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// topTable : 预先创建一个包含VIEW_PUBJieShi_File列的表 存储查询到的全部数据
+        /// </summary>
+        /// <returns></returns>
+        private DataTable MakeTopTable()
+        {
+            //strSectionGUID, strPUBJieShiGUID, strFileName, dtUpTime, nFileSize, strTitle
+            DataTable topTable = new DataTable("topNames");
+
+            DataColumn _Column1 = new DataColumn();
+            _Column1.DataType = System.Type.GetType("System.String");
+            _Column1.ColumnName = "strSectionGUID";
+            topTable.Columns.Add(_Column1);
+
+            DataColumn _Column2 = new DataColumn();
+            _Column2.DataType = System.Type.GetType("System.String");
+            _Column2.ColumnName = "strPUBJieShiGUID";
+            topTable.Columns.Add(_Column2);
+
+            DataColumn _Column3 = new DataColumn();
+            _Column3.DataType = System.Type.GetType("System.String");
+            _Column3.ColumnName = "strFileName";
+            topTable.Columns.Add(_Column3);
+
+            DataColumn _Column4 = new DataColumn();
+            _Column4.DataType = System.Type.GetType("System.String");
+            _Column4.ColumnName = "dtUpTime";
+            topTable.Columns.Add(_Column4);
+
+            DataColumn _Column5 = new DataColumn();
+            _Column5.DataType = System.Type.GetType("System.String");
+            _Column5.ColumnName = "nFileSize";
+            topTable.Columns.Add(_Column5);
+
+            DataColumn _Column6 = new DataColumn();
+            _Column6.DataType = System.Type.GetType("System.String");
+            _Column6.ColumnName = "strTitle";
+            topTable.Columns.Add(_Column6);
+
+
+            DataColumn _Column7 = new DataColumn();
+            _Column7.DataType = System.Type.GetType("System.String");
+            _Column7.ColumnName = "strOrginName";
+            topTable.Columns.Add(_Column7);
+            return topTable;
+        }
+
+        //返回错误信息
+        string sRetErrJSON(string strErr)
+        {
+            return "{\"result\":1,\"resultStr\":\"" + strErr + "\"}";
+        }
+        
+        /// <summary>
+        /// 帮助文档
+        /// </summary>
+        /// <returns></returns>
+        private string gotoHelp()
+        {
+            string strHelp = @"1.10	获取公布揭示文件信息
+ 调用参数
+
+ 参数格式
+
+    cid=xxx&pid=xxx
+
+ 参数说明
+
+    cid:为客户端编号
+    pid:为当前值乘的计划GUID（可为空）
+
+ 返回参数
+
+     参数格式
+
+        {'result':0,'resultStr':'返回成功','pubJieShiList':[{'strPUBJieShiGUID':'','strTitle':'',strFileName':'',nFileSize':'',dtUpTime':'','sectionList':[{'sectionID':''}]}]}
+        
+        {'result':1,'resultStr':'返回错误'}
+     
+    参数说明
+
+        zzieShiList：写卡揭示列表
+        strJieShiGUID：揭示GUID
+        strSectionGUID：写卡区段GUID
+        strJieShiFile：揭示文件
+        dtCreateTime：创建时间
+";
+            FileInfo fi = new FileInfo(HttpContext.Current.Request.PhysicalPath);
+            strHelp += "\r\n--------";
+            strHelp += "\r\n创建时间:" + fi.CreationTime.ToString();
+            strHelp += "\r\n最后更新:" + fi.LastWriteTime.ToString();
+            return strHelp;
+        }
+    }
+}

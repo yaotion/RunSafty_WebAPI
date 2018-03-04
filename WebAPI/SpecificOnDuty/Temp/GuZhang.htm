@@ -1,0 +1,47 @@
+﻿<table border="1" style="text-align: center; width:98%">
+    <tr>
+        <td align="center">
+            <b>机车号</b>
+        </td>
+        <td>
+            <b>前期重点故障信息</b>
+        </td>
+        <td>
+            <b>回段后施修情况</b>
+        </td>
+        <td>
+            <b>运行中需重点注意事项</b>
+        </td>
+        <td>
+            <b>是否为重点活</b>
+        </td>
+        <td>
+            <b>日期</b>
+        </td>
+      
+    </tr>
+    #set($i = 0) #foreach($lsx in $Data) #set($i =$i+ 1)
+    <tr>
+        #if ($i == 1)
+        <td rowspan="$Data.count">
+            $lsx.StrCheXing&nbsp;-&nbsp;$lsx.StrCheHao
+        </td>
+        #end
+        <td>
+            $lsx.QQGZXX
+        </td>
+        <td>
+            $lsx.HDHSGQK
+        </td>
+        <td>
+            $lsx.YXZXYZYSX
+        </td>
+        <td>
+            $lsx.SFWZDH
+        </td>
+         <td>
+            $lsx.DATE
+        </td>
+    </tr>
+    #end
+</table>

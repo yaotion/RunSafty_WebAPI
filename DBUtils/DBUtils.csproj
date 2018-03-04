@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B4DA795B-01E6-463B-9E6B-6D5BD2006CDC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DBUtils</RootNamespace>
+    <AssemblyName>TF.RunSafty.DBUtils</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThinkFreely.DBUtility">
+      <HintPath>..\Libs\ThinkFreely.DBUtility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base_TrainNo\DBBase_TrainNo.cs" />
+    <Compile Include="Bfjr\TAB_Base_Bfjr_Dictionary.cs" />
+    <Compile Include="Bfjr\TAB_Base_Jwd_Address.cs" />
+    <Compile Include="Excel导入到数据库\ExcelAdd.cs" />
+    <Compile Include="LED大屏\GetAllSign.cs" />
+    <Compile Include="LED大屏\LedFile.cs" />
+    <Compile Include="LED大屏\Tab_Config_LED_Class_Order.cs" />
+    <Compile Include="LED大屏\VIEW_LED_Files_Clients.cs" />
+    <Compile Include="Notice\Tab_DeliverJSPrint.cs" />
+    <Compile Include="Notice\TAB_FileGroup.cs" />
+    <Compile Include="Notice\TAB_NoticeFile.cs" />
+    <Compile Include="Notice\TAB_NoticeType.cs" />
+    <Compile Include="Notice\TAB_ReadDoc.cs" />
+    <Compile Include="Notice\TAB_ReadDocPlan.cs" />
+    <Compile Include="Notice\TAB_ReadHistory.cs" />
+    <Compile Include="Place\TAB_Base_DutyPlace.cs" />
+    <Compile Include="Place\TAB_Base_Site_DutyPlace.cs" />
+    <Compile Include="Place\TAB_Base_TrainJiaolu_DutyPlace.cs" />
+    <Compile Include="Place\VIEW_Base_Site_DutyPlace.cs" />
+    <Compile Include="Place\VIEW_Base_TrainJiaolu_DutyPlace.cs" />
+    <Compile Include="PlanToBetake\Plan_BeginWork.cs" />
+    <Compile Include="PlanToBetake\TAB_Plan_ToBeTake.cs" />
+    <Compile Include="PlanToBetake\VIEW_Plan_Trainman_TrainPlan.cs" />
+    <Compile Include="Plan\TAB_Plan_Train.cs" />
+    <Compile Include="Plan\VIEW_Plan_BeginWork.cs" />
+    <Compile Include="Plan\VIEW_Plan_EndWork.cs" />
+    <Compile Include="Plan\VIEW_Plan_EndWork_Full.cs" />
+    <Compile Include="Plan\VIEW_Plan_Trainman.cs" />
+    <Compile Include="Plan_Beginwork_Step\DBPlan_Beginwork_Step.cs" />
+    <Compile Include="Plan_InOutRoom\TAB_Plan_InOutRoom.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sms\TAB_MsgCallWork.cs" />
+    <Compile Include="Sms\TAB_MsgCallWork_Record.cs" />
+    <Compile Include="TrainJiaoLu\TrainJiaoLu.cs" />
+    <Compile Include="Train\TAB_Base_TrainJiaoluInSite.cs" />
+    <Compile Include="Train\TAB_Base_TrainNo.cs" />
+    <Compile Include="Train\VIEW_Base_TrainNo.cs" />
+    <Compile Include="VIEW_Plan_OutWork\DBVIEW_Plan_OutWork.cs" />
+    <Compile Include="WorkShop\WorkShop.cs" />
+    <Compile Include="图定车次行车计划\GetAllSign.cs" />
+    <Compile Include="图定车次行车计划\GetAllUpPerson.cs" />
+    <Compile Include="图定车次行车计划\Tab_Plan_Rest.cs" />
+    <Compile Include="导航信息处理类\Nav.cs" />
+    <Compile Include="数据库访问类\SqlHelps.cs" />
+    <Compile Include="数据操作基类\DBOperator.cs" />
+    <Compile Include="日志信息处理类\Diary.cs" />
+    <Compile Include="班序\DBBanXu.cs" />
+    <Compile Include="班序\DBKaoQin.cs" />
+    <Compile Include="用户信息处理类\Users.cs" />
+    <Compile Include="角色权限处理类\Roles.cs" />
+    <Compile Include="记名式传达\DBDutyReading.cs" />
+    <Compile Include="页面查询基类\SearchPage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonUtility\CommonUtility.csproj">
+      <Project>{AEB4AAD5-6D16-4138-8427-00F6E960D0DB}</Project>
+      <Name>CommonUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entry\Entry.csproj">
+      <Project>{74CA0ECB-3D0E-492C-B6F2-CAC939E8AF8C}</Project>
+      <Name>Entry</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\NVelocity.dll" />
+    <Content Include="bin\Debug\TF.RunSafty.CommonUtility.dll" />
+    <Content Include="bin\Debug\TF.RunSafty.CommonUtility.pdb" />
+    <Content Include="bin\Debug\TF.RunSafty.DBUtils.dll" />
+    <Content Include="bin\Debug\TF.RunSafty.DBUtils.pdb" />
+    <Content Include="bin\Debug\TF.RunSafty.Entry.dll" />
+    <Content Include="bin\Debug\TF.RunSafty.Entry.pdb" />
+    <Content Include="bin\Debug\ThinkFreely.DBUtility.dll" />
+    <Content Include="obj\Debug\DBUtils.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\TF.RunSafty.DBUtils.dll" />
+    <Content Include="obj\Debug\TF.RunSafty.DBUtils.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\TF.RunSafty.DBUtils.zip" />
+    <None Include="obj\Debug\DBUtils.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

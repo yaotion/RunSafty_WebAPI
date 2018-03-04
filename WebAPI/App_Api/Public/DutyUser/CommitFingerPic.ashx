@@ -1,0 +1,170 @@
+﻿<%@ WebHandler Language="C#" Class="TF.RunSaftyAPI.App_Api.Public.DutyUser.CommitFingerPic" %>
+using System;
+using System.Collections;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using System.Xml.Linq;
+using System.Web.Script.Serialization;
+using System.Data.SqlClient;
+using System.Text;
+using ThinkFreely.DBUtility;
+using System.Configuration;
+using System.Reflection;
+using System.IO;
+
+namespace TF.RunSaftyAPI.App_Api.Public.DutyUser
+{
+    /// <summary>
+    /// 2.6	值班员指纹照片修改
+    /// 
+    ///   2014-06  
+    ///   by Mr.Tang
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    public class CommitFingerPic : IHttpHandler
+    {
+
+        public string sRequest = "";
+        //参数
+        public string strcid = "";    //cid：为客户端编号
+        public string strdata = "";   //出勤信息
+
+        public void ProcessRequest(HttpContext context)
+        {
+            try
+            {
+                string strQuery = context.Request.QueryString.ToString().ToLower();
+                if (strQuery == "help" || strQuery == "h") //帮助
+                {
+                    sRequest += gotoHelp();
+                    return;
+                }
+                if (!string.IsNullOrEmpty(context.Request["cid"]))
+                    strcid = context.Request["cid"];
+
+                if (!string.IsNullOrEmpty(context.Request["data"]))
+                {
+                    strdata = context.Request["data"];
+                    if (strdata.StartsWith("{") && strdata.EndsWith("}"))
+                        sRequest += gotoCommitFingerPic();
+                    else
+                    {
+                        sRequest += sRetErrJSON("data格式错误");
+                        return;
+                    }
+                }
+                else
+                {
+                    sRequest += sRetErrJSON("data不能为空");
+                    return;
+                }
+            }
+            finally
+            {
+                context.Response.ContentType = "text/plain";
+                context.Response.Write(sRequest);
+            }
+        }
+
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 2.6	值班员指纹照片修改
+        /// </summary>
+        private string gotoCommitFingerPic()
+        {
+            //执行反序列化
+            JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
+            objFingerPic FingerPic = jsonSerializer.Deserialize<objFingerPic>(strdata);
+
+            string strSql = "UPDATE TAB_Org_DutyUser SET FingerPrint1 =@Finger1, FingerPrint2 =@Finger2, Picture =@Pic WHERE (strTrainmanGUID = '@userID')";
+            SqlParameter[] sqlParams = {
+                                           new SqlParameter("Finger1",FingerPic.finger1),
+                                           new SqlParameter("Finger2",FingerPic.finger2),
+                                           new SqlParameter("Pic",toPictrue(FingerPic.pic)),
+                                           new SqlParameter("userID",FingerPic.userID)
+                                        };
+            int iExs = Convert.ToInt32(SqlHelper.ExecuteScalar(SqlHelper.ConnString, CommandType.Text, strSql, sqlParams));
+            if (iExs < 1)
+                return sRetErrJSON("更新乘务员指纹照片时错误");
+
+            string strGuid = System.Guid.NewGuid().ToString();
+            strSql = "UPDATE TAB_System_Config SET strValue ='" + strGuid + "'  WHERE (strSection = 'SysConfig') AND (strIdent = 'ServerDutyUserFingerLibGUID')";
+            int iErr = Convert.ToInt32(SqlHelper.ExecuteScalar(SqlHelper.ConnString, CommandType.Text, strSql));
+            if (iErr < 1)
+                return sRetErrJSON("更新指纹照片标识时错误");
+            
+            return "{\"result\":0,\"resultStr\":\"返回成功\"}";
+        }
+
+        /// <summary>
+        /// 二进制转byte数组
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        byte[] toPictrue(string data)
+        {
+
+            Byte[] PicByteArray = Convert.FromBase64String( data);
+            return PicByteArray;
+        }
+
+        //返回错误信息
+        string sRetErrJSON(string strErr)
+        {
+            return "{\"result\":1,\"resultStr\":\"" + strErr + "\"}";
+        }
+
+        /// <summary>
+        /// 帮助文档
+        /// </summary>
+        /// <returns></returns>
+        private string gotoHelp()
+        {
+            string strHelp = @"2.6	值班员指纹照片修改
+ 参数格式
+
+    cid=xxx&data=
+
+ 参数说明
+
+    cid:为客户端编号
+    data:出勤信息
+    data的格式参照对象说明
+        {'userID':'','finger1':'','finger2':'','pic':''}
+
+ 返回参数
+     参数格式
+
+        {'result':0,'resultStr':'返回成功'}
+
+        {'result':1,'resultStr':'返回错误原因'}
+
+ 参数说明
+";
+            FileInfo fi = new FileInfo(HttpContext.Current.Request.PhysicalPath);
+            strHelp += "\r\n--------";
+            strHelp += "\r\n创建时间:" + fi.CreationTime.ToString();
+            strHelp += "\r\n最后更新:" + fi.LastWriteTime.ToString();
+            return strHelp;
+        }
+    }
+
+    public class objFingerPic
+    {
+        public int userID { get; set; }
+        public string finger1 { get; set; }
+        public string finger2 { get; set; }
+        public string pic { get; set; }
+    }
+}

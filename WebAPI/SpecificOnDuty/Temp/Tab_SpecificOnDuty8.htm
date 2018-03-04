@@ -1,0 +1,36 @@
+﻿<h3>
+    运用车间信息</h3>
+#foreach($person in $Data)
+<table border="1" class="t2">
+    <tr>
+        <td align="right" style="width: 7%">
+            <b>行车交路：</b>
+        </td>
+        <td align="center" style="width: 7%">
+            $person.col0
+        </td>
+        <td align="right" style="width: 10%">
+            <b>关键站：</b>
+        </td>
+        <td style="width: 30%" align="center">
+            $person.col1
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <b>操作要求：</b>
+        </td>
+        <td align="center" colspan="3">
+            $person.col2
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <b>预警：</b>
+        </td>
+        <td align="center" colspan="3">
+            $person.col3
+        </td>
+    </tr>
+</table>
+#end 

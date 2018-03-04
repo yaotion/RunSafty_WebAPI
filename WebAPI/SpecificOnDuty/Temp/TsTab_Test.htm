@@ -1,0 +1,38 @@
+﻿<table border="1" cellspacing="0" style="text-align: center; width:100%">
+    <tr>
+        <td colspan="3">
+            <b>考试勘误</b>
+        </td>
+    </tr>
+    #if($Data.Count==0)
+    <tr>
+        <td style="color: Green">
+            暂无数据
+        </td>
+    </tr>
+    #else
+    <tr>
+        <td>
+            考试题目
+        </td>
+        <td>
+            标准答案
+        </td>
+        <td>
+            错误答案
+        </td>
+    </tr>
+    #foreach($t in $Data)
+    <tr>
+        <td style="width: 83%; text-align: left; padding-left: 2px; padding-right: 2px;">
+            $t.strName&nbsp;&nbsp;&nbsp;&nbsp; $t.Answers
+        </td>
+        <td style="color: Green">
+            $t.strTrue
+        </td>
+        <td style="color: Red">
+            $t.strSelect
+        </td>
+    </tr>
+    #end #end
+</table>

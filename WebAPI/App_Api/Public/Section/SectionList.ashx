@@ -1,0 +1,156 @@
+﻿<%@ WebHandler Language="C#" Class="TF.RunSaftyAPI.App_Api.Public.Section.SectionList" %>
+using System;
+using System.Collections;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using System.Xml.Linq;
+using System.Data.SqlClient;
+using System.Text;
+using ThinkFreely.DBUtility;
+using System.Configuration;
+using System.Reflection;
+using System.IO;
+
+namespace TF.RunSaftyAPI.App_Api.Public.Section
+{
+    /// <summary>
+    /// 1.7	获取写卡区段
+    /// 
+    ///   2014-06  
+    ///   by Mr.Tang
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    public class SectionList : IHttpHandler
+    {
+        string sRequest = "";
+
+        string strcid = "";
+        string strpid = "";
+
+        public void ProcessRequest(HttpContext context)
+        {
+            try
+            {
+                string strQuery = context.Request.QueryString.ToString().ToLower();
+                if (strQuery == "help" || strQuery == "h") //帮助
+                {
+                    sRequest += gotoHelp();
+                    return;
+                }
+                if (!string.IsNullOrEmpty(context.Request["cid"]))
+                    strcid = context.Request["cid"];
+
+                if (!string.IsNullOrEmpty(context.Request["pid"]))
+                {
+                    strpid = context.Request["pid"];
+                    sRequest += gotoSectionList();
+                }
+                else
+                {
+                    sRequest += sRetErrJSON("pid不能为空");
+                    return;
+                }
+            }
+            finally
+            {
+                context.Response.ContentType = "text/plain";
+                context.Response.Write(sRequest);
+            }
+        }
+
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 1.7	获取写卡区段
+        /// </summary>
+        /// <param name="hct"></param>
+        /// <returns></returns>
+        private string gotoSectionList()
+        {
+            ///依据cid从TAB_Base_Site获取客户端所属机务段的编号:strAreaGUID
+            ///从表VIEW_Base_Writecard_Section中依据字段strAreaGUID字段获取sectionName，sectionID信息并返回
+
+            string strSql = @"SELECT strSectionName,strSectionID FROM VIEW_Base_TrainJiaolu_Section 
+	WHERE strTrainJiaoluGUID in(SELECT strTrainJiaoluGUID FROM TAB_Plan_Train  WHERE strTrainPlanGUID =@TrainPlanGUID)";
+            SqlParameter[] sqlParams = { 
+                                         new SqlParameter("TrainPlanGUID",strpid)
+                                     };
+            DataTable dt = SqlHelper.ExecuteDataset(SqlHelper.ConnString, CommandType.Text, strSql, sqlParams).Tables[0];
+            if (dt.Rows.Count < 1)
+                return sRetErrJSON("该pid未找到对应数据");
+
+            string strJson = "";
+            string strnID = "";
+            int y = dt.Rows.Count - 1;
+
+            ///组织数据为JSON
+            for (int x = 0; x <= y; x++)
+            {
+                string strSectionName = dt.Rows[x]["strSectionName"].ToString();
+                string strSectionID = dt.Rows[x]["strSectionID"].ToString();
+
+                //组织子对象数据
+                strJson += "{\"sectionName\":\"" + strSectionName + "\",\"sectionID\":\"" + strSectionID + "\"}";
+
+                if (x < y)  //加分号
+                    strJson += ",";
+            }
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("{\"result\":0,\"resultStr\":\"返回成功\",sectionList\":[");
+            sb.Append(strJson);
+            sb.Append("]}");
+
+            return sb.ToString();
+        }
+
+        //返回错误信息
+        string sRetErrJSON(string strErr)
+        {
+            return "{\"result\":1,\"resultStr\":\"" + strErr + "\"}";
+        }
+
+        /// <summary>
+        /// 帮助文档
+        /// </summary>
+        /// <returns></returns>
+        private string gotoHelp()
+        {
+            string strHelp = @"1.7	获取写卡区段
+ 调用参数
+     参数格式
+        cid=xxx
+
+     参数说明
+        cid:为客户端编号
+
+ 返回参数
+    参数格式
+        {'result':0,'resultStr':'返回成功',sectionList':[{'sectionName':'','sectionID':''},…]}
+
+        {'result':1,'resultStr':'返回错误'}
+
+     参数说明
+
+        sectionList：区段列表
+        sectionName：区段名称
+        sectionID：区段编号
+";
+            FileInfo fi = new FileInfo(HttpContext.Current.Request.PhysicalPath);
+            strHelp += "\r\n--------";
+            strHelp += "\r\n创建时间:" + fi.CreationTime.ToString();
+            strHelp += "\r\n最后更新:" + fi.LastWriteTime.ToString();
+            return strHelp;
+        }
+    }
+}

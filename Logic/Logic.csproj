@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BE5A0F7C-1A07-431F-9361-025342BF302B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Logic</RootNamespace>
+    <AssemblyName>TF.RunSafty.Logic</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThinkFreely.DBUtility">
+      <HintPath>..\Libs\ThinkFreely.DBUtility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LED大屏\Tab_Config_LED_Class_Order.cs" />
+    <Compile Include="LED大屏\Tab_Led_File.cs" />
+    <Compile Include="PlanToBetake\Plan_BeginWork.cs" />
+    <Compile Include="PlanToBetake\TAB_Plan_ToBeTake.cs" />
+    <Compile Include="PlanToBetake\VIEW_Plan_Trainman_TrainPlan.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="业务逻辑处理类\AshxService\DBadControl.cs" />
+    <Compile Include="业务逻辑处理类\Attachment\Attachment.cs" />
+    <Compile Include="业务逻辑处理类\Base_Branch_TrainFilter\Base_Branch_TrainFilter.cs" />
+    <Compile Include="业务逻辑处理类\Base_PlanParam\Base_PlanParam.cs" />
+    <Compile Include="业务逻辑处理类\Base_Site_StepConfig\Base_Site_StepConfig.cs" />
+    <Compile Include="业务逻辑处理类\Base_TrainmanTypeTurn\Base_TrainmanTypeTurn.cs" />
+    <Compile Include="业务逻辑处理类\BearingAlarm\BearingAlarm.cs" />
+    <Compile Include="业务逻辑处理类\BearingAnalysis\BearingAnalysis.cs" />
+    <Compile Include="业务逻辑处理类\Bfjr\TAB_Base_Bfjr_Dictionary.cs" />
+    <Compile Include="业务逻辑处理类\Bfjr\TAB_Base_Jwd_Address.cs" />
+    <Compile Include="业务逻辑处理类\EquipmentTypeFault\EquipmentTypeFault.cs" />
+    <Compile Include="业务逻辑处理类\getInfoFromLocoService\getInfoFromLocoService.cs" />
+    <Compile Include="业务逻辑处理类\HandleCaseRecord\HandleCaseRecord.cs" />
+    <Compile Include="业务逻辑处理类\HandleCase\HandleCase.cs" />
+    <Compile Include="业务逻辑处理类\HandleProcessTrainType\HandleProcessTrainType.cs" />
+    <Compile Include="业务逻辑处理类\HandleProcess\HandleProcess.cs" />
+    <Compile Include="业务逻辑处理类\HandleStep\HandleStep.cs" />
+    <Compile Include="业务逻辑处理类\IC卡揭示\JieShiFilePublish.cs" />
+    <Compile Include="业务逻辑处理类\JiCheAssessConfig\JiCheAssessConfig.cs" />
+    <Compile Include="业务逻辑处理类\JiCheAssess\JiCheAssess.cs" />
+    <Compile Include="业务逻辑处理类\LED\LedFile.cs" />
+    <Compile Include="业务逻辑处理类\LED\VIEW_LED_Files_Clients.cs" />
+    <Compile Include="业务逻辑处理类\LKJDataAnalysis\LKJDataAnalysis.cs" />
+    <Compile Include="业务逻辑处理类\LKJDataFaultRecord\LKJDataFaultRecord.cs" />
+    <Compile Include="业务逻辑处理类\lsDatCiPing\lsDatCiPing.cs" />
+    <Compile Include="业务逻辑处理类\lsDatDanJie\lsDatDanJie.cs" />
+    <Compile Include="业务逻辑处理类\lsDatFengSu\lsDatFengSu.cs" />
+    <Compile Include="业务逻辑处理类\lsDatHuaBan\lsDatHuaBan.cs" />
+    <Compile Include="业务逻辑处理类\lsDatJT6JiChe\lsDatJT6JiChe.cs" />
+    <Compile Include="业务逻辑处理类\lsDatLieCheGuan\lsDatLieCheGuan.cs" />
+    <Compile Include="业务逻辑处理类\lsDatLvWang\lsDatLvWangRecord.cs" />
+    <Compile Include="业务逻辑处理类\lsDatZhiGongDian\lsDatZhiGongDian.cs" />
+    <Compile Include="业务逻辑处理类\lsDicFengSu\lsDicFengSu.cs" />
+    <Compile Include="业务逻辑处理类\lsDicJianCeTianShu\lsDicJianCeTianShu.cs" />
+    <Compile Include="业务逻辑处理类\lsDicLocoType\lsDicLocoType.cs" />
+    <Compile Include="业务逻辑处理类\lsDicUserInfo\lsDicUserInfo.cs" />
+    <Compile Include="业务逻辑处理类\Lxd\Lxd.cs" />
+    <Compile Include="业务逻辑处理类\MBManage\MBManage.cs" />
+    <Compile Include="业务逻辑处理类\MBVersion\MBVersion.cs" />
+    <Compile Include="业务逻辑处理类\MobilePassWord\MobilePassWord.cs" />
+    <Compile Include="业务逻辑处理类\NameGroup\NameGroup.cs" />
+    <Compile Include="业务逻辑处理类\Notice\Tab_DeliverJSPrint.cs" />
+    <Compile Include="业务逻辑处理类\Notice\TAB_FileGroup.cs" />
+    <Compile Include="业务逻辑处理类\Notice\TAB_NoticeFile.cs" />
+    <Compile Include="业务逻辑处理类\Notice\TAB_NoticeType.cs" />
+    <Compile Include="业务逻辑处理类\Notice\TAB_ReadDoc.cs" />
+    <Compile Include="业务逻辑处理类\Notice\TAB_ReadDocPlan.cs" />
+    <Compile Include="业务逻辑处理类\Notice\TAB_ReadHistory.cs" />
+    <Compile Include="业务逻辑处理类\NoVeifyCardTrain\NoVeifyCardTrain.cs" />
+    <Compile Include="业务逻辑处理类\OverWork\SectionFilter.cs" />
+    <Compile Include="业务逻辑处理类\Place\TAB_Base_DutyPlace.cs" />
+    <Compile Include="业务逻辑处理类\Place\TAB_Base_Site_DutyPlace.cs" />
+    <Compile Include="业务逻辑处理类\Place\TAB_Base_TrainJiaolu_DutyPlace.cs" />
+    <Compile Include="业务逻辑处理类\Place\VIEW_Base_Site_DutyPlace.cs" />
+    <Compile Include="业务逻辑处理类\Place\VIEW_Base_TrainJiaolu_DutyPlace.cs" />
+    <Compile Include="业务逻辑处理类\Plan\TAB_Plan_Train.cs" />
+    <Compile Include="业务逻辑处理类\Plan\VIEW_Plan_BeginWork.cs" />
+    <Compile Include="业务逻辑处理类\Plan\VIEW_Plan_EndWork.cs" />
+    <Compile Include="业务逻辑处理类\Plan\VIEW_Plan_EndWork_Full.cs" />
+    <Compile Include="业务逻辑处理类\Plan\VIEW_Plan_Trainman.cs" />
+    <Compile Include="业务逻辑处理类\ProofFiles\ProofFiles.cs" />
+    <Compile Include="业务逻辑处理类\RiskWarning\RiskWarning.cs" />
+    <Compile Include="业务逻辑处理类\Section\TAB_WorkTime_AdditionalBLL.cs" />
+    <Compile Include="业务逻辑处理类\SMPConfig\SMPConfig.cs" />
+    <Compile Include="业务逻辑处理类\Sms\TAB_MsgCallWork.cs" />
+    <Compile Include="业务逻辑处理类\Sms\TAB_MsgCallWork_Record.cs" />
+    <Compile Include="业务逻辑处理类\StandardHandleRecord\StandardHandleRecord.cs" />
+    <Compile Include="业务逻辑处理类\StepOftenFault\StepOftenFault.cs" />
+    <Compile Include="业务逻辑处理类\StepRelation\StepRelation.cs" />
+    <Compile Include="业务逻辑处理类\Sysconfig\Sysconfig.cs" />
+    <Compile Include="业务逻辑处理类\System_SiteConfig\System_SiteConfig.cs" />
+    <Compile Include="业务逻辑处理类\TAB_Base_Writecard_Section\TAB_Base_Writecard_Section.cs" />
+    <Compile Include="业务逻辑处理类\TAB_SysConfig\SysConfig.cs" />
+    <Compile Include="业务逻辑处理类\TAB_TrackRect\TrackRect.cs" />
+    <Compile Include="业务逻辑处理类\TrainJiaoLu\TrainJiaoLu.cs" />
+    <Compile Include="业务逻辑处理类\TrainmanJiaolu\TRsDBTrainmanJiaolu.cs" />
+    <Compile Include="业务逻辑处理类\Train\TAB_Base_TrainJiaoluInSite.cs" />
+    <Compile Include="业务逻辑处理类\Train\TAB_Base_TrainNo.cs" />
+    <Compile Include="业务逻辑处理类\Train\VIEW_Base_TrainNo.cs" />
+    <Compile Include="业务逻辑处理类\WorkGuideDetail\WorkGuideDetail.cs" />
+    <Compile Include="业务逻辑处理类\WorkGuideDirectory\WorkGuideDirectory.cs" />
+    <Compile Include="业务逻辑处理类\WorkGuidePosition\WorkGuidePosition.cs" />
+    <Compile Include="业务逻辑处理类\WorkGuide\WorkGuide.cs" />
+    <Compile Include="业务逻辑处理类\WorkShop\Workshop.cs" />
+    <Compile Include="业务逻辑处理类\WorkTime\MonthWorkTimeBLL.cs" />
+    <Compile Include="业务逻辑处理类\WorkTime\WorkTimeMonthSectionFilter.cs" />
+    <Compile Include="业务逻辑处理类\WorkTime_Turn_Branch\WorkTime_Turn_Branch.cs" />
+    <Compile Include="业务逻辑处理类\ZbAreaConfig\ZbAreaConfig.cs" />
+    <Compile Include="业务逻辑处理类\ZbcData\ZbcData.cs" />
+    <Compile Include="业务逻辑处理类\ZBC\ZBC.cs" />
+    <Compile Include="业务逻辑处理类\业务类\FlowChartDraw\FlowChartDraw.cs" />
+    <Compile Include="业务逻辑处理类\业务类\HandleProcess\ItemShow.cs" />
+    <Compile Include="业务逻辑处理类\业务类\ZBBJ\Zbbj.cs" />
+    <Compile Include="业务逻辑处理类\业务类\ZBDDZH\Zbddzh.cs" />
+    <Compile Include="业务逻辑处理类\乘务员信息\Trainman.cs" />
+    <Compile Include="业务逻辑处理类\人员交路\TrainmanJiaolu.cs" />
+    <Compile Include="业务逻辑处理类\人员周转图统计\Zzttj.cs" />
+    <Compile Include="业务逻辑处理类\值班员管理\ThinkFreely.RunSafty.DutyUser.cs" />
+    <Compile Include="业务逻辑处理类\公布揭示\RC_JFJieShiFile.cs" />
+    <Compile Include="业务逻辑处理类\公布揭示\RC_SectionJiaoFuJSRelation.cs" />
+    <Compile Include="业务逻辑处理类\出入寓\inoutroom.cs" />
+    <Compile Include="业务逻辑处理类\出勤地点设置\ChuQinDiDian.cs" />
+    <Compile Include="业务逻辑处理类\出勤记录\BeginWork.cs" />
+    <Compile Include="业务逻辑处理类\出退勤记录\BeginEndWork.cs" />
+    <Compile Include="业务逻辑处理类\列车类型分配\TrainNoBelong.cs" />
+    <Compile Include="业务逻辑处理类\区域管理\Area.cs" />
+    <Compile Include="业务逻辑处理类\叫班记录\CallRecord.cs" />
+    <Compile Include="业务逻辑处理类\客户端关注类别\AttentionType.cs" />
+    <Compile Include="业务逻辑处理类\客户端关注类别配置\AttentionTypeConfig.cs" />
+    <Compile Include="业务逻辑处理类\客户端消息\AttentionMsg.cs" />
+    <Compile Include="业务逻辑处理类\客户端消息\角色权限\ModuleRelation.cs" />
+    <Compile Include="业务逻辑处理类\客户端消息\角色权限\UnitRelation.cs" />
+    <Compile Include="业务逻辑处理类\客户端管理\Site.cs" />
+    <Compile Include="业务逻辑处理类\客户端管理\Site_Additional.cs" />
+    <Compile Include="业务逻辑处理类\干部检查\exam.cs" />
+    <Compile Include="业务逻辑处理类\指导组管理\SmallGuidGroup.cs" />
+    <Compile Include="业务逻辑处理类\指导队管理\GuideGroup.cs" />
+    <Compile Include="业务逻辑处理类\月劳查询\MonthWorkTime.cs" />
+    <Compile Include="业务逻辑处理类\机车交路\TrainJiaolu.cs" />
+    <Compile Include="业务逻辑处理类\机车人员交路关系\JiaoluRelation.cs" />
+    <Compile Include="业务逻辑处理类\机车配属设置\TrainBelong.cs" />
+    <Compile Include="业务逻辑处理类\检修数据库操作\AcceptItemRecord\AcceptItemRecord.cs" />
+    <Compile Include="业务逻辑处理类\检修数据库操作\AcceptItem\AcceptItem.cs" />
+    <Compile Include="业务逻辑处理类\检修数据库操作\AshxService\DBadControl.cs" />
+    <Compile Include="业务逻辑处理类\检修数据库操作\CheckItemRecord\CheckItemRecord.cs" />
+    <Compile Include="业务逻辑处理类\检修数据库操作\lsDatFlowChartData\lsDatFlowChartData.cs" />
+    <Compile Include="业务逻辑处理类\检修数据库操作\lsDatJianXiuPlan\lsDatJianXiuPlan.cs" />
+    <Compile Include="业务逻辑处理类\检修数据库操作\lsDicFlowChart\lsDicFlowChart.cs" />
+    <Compile Include="业务逻辑处理类\检修数据库操作\lsDicUserInfo\lsDicUserInfo.cs" />
+    <Compile Include="业务逻辑处理类\测酒信息\Drink.cs" />
+    <Compile Include="业务逻辑处理类\班序比对\GroupSortDiff.cs" />
+    <Compile Include="业务逻辑处理类\电子名牌\Nameplate.cs" />
+    <Compile Include="业务逻辑处理类\线路管理\Line.cs" />
+    <Compile Include="业务逻辑处理类\自动更新\AutoUpdate.cs" />
+    <Compile Include="业务逻辑处理类\行车区段管理\TrainJiaoLuSection.cs" />
+    <Compile Include="业务逻辑处理类\行车区段管理\TrainZone.cs" />
+    <Compile Include="业务逻辑处理类\行车区段管理\ZFQJ.cs" />
+    <Compile Include="业务逻辑处理类\行车区段管理\ZFStation.cs" />
+    <Compile Include="业务逻辑处理类\角色管理\UserRole.cs" />
+    <Compile Include="业务逻辑处理类\计划信息\Plan.cs" />
+    <Compile Include="业务逻辑处理类\记名式传达\TAB_DutyReading_Information.cs" />
+    <Compile Include="业务逻辑处理类\记名式传达\TAB_TransmitConfig.cs" />
+    <Compile Include="业务逻辑处理类\记名式传达\TAB_TransmitDetails.cs" />
+    <Compile Include="业务逻辑处理类\试题管理\TAB_Exam_Answer.cs" />
+    <Compile Include="业务逻辑处理类\试题管理\TAB_Exam_Question.cs" />
+    <Compile Include="业务逻辑处理类\请假类型\LeaveType.cs" />
+    <Compile Include="业务逻辑处理类\请假类型管理\LeaveMgrLeaveType.cs" />
+    <Compile Include="业务逻辑处理类\请假记录\askleave.cs" />
+    <Compile Include="业务逻辑处理类\趟劳查询\OneWorkTime.cs" />
+    <Compile Include="业务逻辑处理类\车站管理\Station.cs" />
+    <Compile Include="业务逻辑处理类\车间站点分布\StationInWorkShop.cs" />
+    <Compile Include="业务逻辑处理类\车间管理\WorkShop.cs" />
+    <Compile Include="业务逻辑处理类\车间管辖车站信息\StationInWorkShop.cs" />
+    <Compile Include="业务逻辑处理类\退勤记录\EndWork.cs" />
+    <Compile Include="业务逻辑处理类\销假记录\sickleave.cs" />
+    <Compile Include="事务处理\SqlTrans.cs" />
+    <Compile Include="出入公寓记录\TAB_Plan_InRoom.cs" />
+    <Compile Include="出入公寓记录\TAB_Plan_OutRoom.cs" />
+    <Compile Include="图定车次行车计划\AddPlanSign.cs" />
+    <Compile Include="图定车次行车计划\getAllSign.cs" />
+    <Compile Include="图定车次行车计划\TAB_Base_PlanRest_Json.cs" />
+    <Compile Include="图定车次行车计划\Tab_Plan_Rest.cs" />
+    <Compile Include="头部信息处理类\VosionLinks.cs" />
+    <Compile Include="导航信息处理类\Nav.cs" />
+    <Compile Include="日志信息处理类\Diary.cs" />
+    <Compile Include="测酒记录\Drink_InformationBLL.cs" />
+    <Compile Include="添乘记录\BytimeBLL.cs" />
+    <Compile Include="班序\BanXuBLL.cs" />
+    <Compile Include="班序\KaoQinBLL.cs" />
+    <Compile Include="用户信息处理类\Users.cs" />
+    <Compile Include="考试记录\ExamRecordBLL.cs" />
+    <Compile Include="角色权限处理类\Roles.cs" />
+    <Compile Include="运行记录\RunRecord_FileBLL.cs" />
+    <Compile Include="页面基类\DBInterface.cs" />
+    <Compile Include="页面基类\Operation.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="页面基类\PageModule.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="页面基类\SearchMaster\searchmaster.cs" />
+    <Compile Include="页面基类\SystemPB.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="页面基类\系统字典\SystemDic.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonUtility\CommonUtility.csproj">
+      <Project>{AEB4AAD5-6D16-4138-8427-00F6E960D0DB}</Project>
+      <Name>CommonUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBUtils\DBUtils.csproj">
+      <Project>{B4DA795B-01E6-463B-9E6B-6D5BD2006CDC}</Project>
+      <Name>DBUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entry\Entry.csproj">
+      <Project>{74CA0ECB-3D0E-492C-B6F2-CAC939E8AF8C}</Project>
+      <Name>Entry</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

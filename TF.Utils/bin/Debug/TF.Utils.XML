@@ -1,0 +1,369 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TF.Utils</name>
+    </assembly>
+    <members>
+        <member name="T:APIItem">
+            <summary>
+            接口定义
+            </summary>
+        </member>
+        <member name="T:ParamDef">
+            <summary>
+            参数定义
+            </summary>
+        </member>
+        <member name="T:ApiManager">
+             <summary>
+            ApiManager 的摘要说明
+             </summary>
+        </member>
+        <member name="M:ApiManager.GetParamDefFromElement(System.Xml.Linq.XElement)">
+            <summary>
+            从XML节点获取数据定义
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiManager.GetApiList">
+            <summary>
+            从接口文档.XML获取接口定义
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiManager.CacheItemUpdateCallback(System.String,System.Web.Caching.CacheItemUpdateReason,System.Object@,System.Web.Caching.CacheDependency@,System.DateTime@,System.TimeSpan@)">
+            <summary>
+            缓存改变回调函数
+            目的是当接口文档.XML文件发生改变的时候，重新加载接口文档定义。通常发生在接口更新的时候
+            </summary>
+            <param name="key"></param>
+            <param name="reason"></param>
+            <param name="expensiveObject"></param>
+            <param name="dependency"></param>
+            <param name="absoluteExpiration"></param>
+            <param name="slidingExpiration"></param>
+        </member>
+        <member name="M:ApiManager.CacheApiList(System.Collections.Generic.List{APIItem})">
+            <summary>
+            缓存接口列表
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="M:ApiManager.GetApiItemByTypeAndName(System.String,System.String)">
+            <summary>
+            通过接口类型和接口名称获取接口定义
+            </summary>
+            <param name="apiType"></param>
+            <param name="apiName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TF.Utils.TFSQLDB">
+            <summary>
+            畅想SQL数据库操作类
+            </summary>
+        </member>
+        <member name="M:TF.Utils.TFSQLDB.CreateParam(System.String,System.String,System.Data.SqlDbType)">
+            <summary>
+            创建SQL参数
+            </summary>
+            <param name="ParamName">参数名称</param>
+            <param name="ParamValue">参数值</param>
+            <param name="ParamType">参数类型</param>
+            <returns></returns>
+        </member>
+        <member name="T:TF.Utils.APIItem">
+            <summary>
+            接口定义
+            </summary>
+        </member>
+        <member name="T:TF.Utils.ParamDef">
+            <summary>
+            参数定义
+            </summary>
+        </member>
+        <member name="T:TF.Utils.APIManage">
+             <summary>
+            ApiManager 的摘要说明
+             </summary>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetProjectFromElement(System.Xml.Linq.XElement)">
+            <summary>
+            读取项目信息
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetDataListFromElement(System.Xml.Linq.XElement)">
+            <summary>
+            读取数据定义列表
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetDataCategoryFromElement(System.Xml.Linq.XElement)">
+            <summary>
+            读取数据分类信息
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetDataObjectFromElement(System.Xml.Linq.XElement)">
+            <summary>
+            读取单个数据定义信息
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetPropertyObjectFromElement(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            读取数据定义的属性信息
+            </summary>
+            <param name="element"></param>
+            <param name="typeSort"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetApiListFromElement(System.Xml.Linq.XElement)">
+            <summary>
+            读取API列表信息
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetApiTypeFromElement(System.Xml.Linq.XElement)">
+            <summary>
+            读取API分类信息
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetApiItemFromElement(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            读取单个API信息
+            </summary>
+            <param name="element"></param>
+            <param name="assemblyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetParamDefFromElement(System.Xml.Linq.XElement)">
+            <summary>
+            从XML节点获取数据定义
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.#ctor">
+            <summary>
+            APIManage的构造函数
+            </summary>
+        </member>
+        <member name="M:TF.Utils.APIManage.Load">
+            <summary>
+            从Config文件中加载数据
+            </summary>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetInstance">
+            <summary>
+            获取ApiManager的单例形式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetApiList">
+            <summary>
+            从接口文档.XML获取接口定义
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.CacheItemUpdateCallback(System.String,System.Web.Caching.CacheItemUpdateReason,System.Object@,System.Web.Caching.CacheDependency@,System.DateTime@,System.TimeSpan@)">
+            <summary>
+            缓存改变回调函数
+            目的是当接口文档.XML文件发生改变的时候，重新加载接口文档定义。通常发生在接口更新的时候
+            </summary>
+            <param name="key"></param>
+            <param name="reason"></param>
+            <param name="expensiveObject"></param>
+            <param name="dependency"></param>
+            <param name="absoluteExpiration"></param>
+            <param name="slidingExpiration"></param>
+        </member>
+        <member name="M:TF.Utils.APIManage.CacheApiList(System.Collections.Generic.List{TF.Utils.APIItem})">
+            <summary>
+            缓存接口列表
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetApiItemByTypeAndName(System.String,System.String)">
+            <summary>
+            通过接口类型和接口名称获取接口定义
+            </summary>
+            <param name="apiType"></param>
+            <param name="apiName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetApiFromCache(System.String)">
+            <summary>
+            从缓存中获取接口定义
+            </summary>
+            <param name="strApiName">接口名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.GetApiByName(System.Collections.Generic.List{TF.Utils.APIItem},System.String)">
+            <summary>
+            根据接口名称，从接口定义列表中获取指定的接口定义
+            </summary>
+            <param name="items">接口定义列表</param>
+            <param name="strApiName">接口名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.APIManage.ExecAPI(System.String,System.String,System.String@,System.String@)">
+            <summary>
+            执行API方法并把执行结果返回
+            </summary>
+            <param name="APIName"></param>
+            <param name="APIData"></param>
+            <returns></returns>
+        </member>
+        <!-- 对于成员“T:TF.Utils.APIResult”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:TF.Utils.Reflect.ExecAPI(System.String,System.String,System.String,System.String,System.Boolean)”忽略有格式错误的 XML 注释 -->
+        <member name="T:TF.Utils.LogClass">
+             <summary>
+            PageBase 的摘要说明
+             </summary>
+        </member>
+        <member name="M:TF.Utils.LogClass.log(System.String)">
+            <summary>
+            日志（字符串）
+            </summary>
+            <param name="_str"></param>
+        </member>
+        <member name="M:TF.Utils.LogClass.logex(System.Exception,System.String)">
+            <summary>
+            日志（Exception）
+            </summary>
+            <param name="_str"></param>
+        </member>
+        <member name="M:TF.Utils.TFConvert.DBToString(System.Object,System.String)">
+            <summary>
+            数据库字段转化为字符串
+            当转化失败将以用户指定的默认值返回
+            </summary>
+            <param name="DBData"></param>
+            <param name="Default"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.TryDBToString(System.Object,System.String@)">
+            <summary>
+            数据库字段转化为字符串
+            当转化失败时将返回true，false
+            </summary>
+            <param name="DBData"></param>
+            <param name="Value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.DBToStringD(System.Object)">
+            <summary>
+            数据库字段转化为字符串
+            当转化失败将返回""
+            </summary>
+            <param name="DBData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.DBToInt(System.Object,System.Int32)">
+            <summary>
+            数据库字段转化为整形
+            当转化失败将以用户指定的默认值返回
+            </summary>
+            <param name="DBData"></param>
+            <param name="Default"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.TryDBToInt(System.Object,System.Int32@)">
+            <summary>
+            数据库字段转化为整形
+            当转化失败时将返回true，false
+            </summary>
+            <param name="DBData"></param>
+            <param name="Value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.DBToIntD(System.Object)">
+            <summary>
+            数据库字段转化为整形
+            当转化失败将返回0
+            </summary>
+            <param name="DBData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.DBToBool(System.Object,System.Boolean)">
+            <summary>
+            数据库字段转化为布尔型
+            当转化失败将以用户指定的默认值返回
+            </summary>
+            <param name="DBData"></param>
+            <param name="Default"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.TryDBToBool(System.Object,System.Boolean@)">
+            <summary>
+            数据库字段转化为字符串
+            当转化失败时将返回true，false
+            
+            </summary>
+            <param name="DBData"></param>
+            <param name="Value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.DBToBoolD(System.Object)">
+            <summary>
+            数据库字段转化为布尔型
+            当转化失败将返回false
+            </summary>
+            <param name="DBData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.DBToDateTime(System.Object,System.DateTime)">
+            <summary>
+            数据库字段转化为日期函数
+            当转化失败将以用户指定的默认值返回
+            </summary>
+            <param name="DBData"></param>
+            <param name="Default"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.TryDBToDateTime(System.Object,System.DateTime@)">
+            <summary>
+            数据库字段转化为日期时间型
+            当转化失败时将返回true，false
+            </summary>
+            <param name="DBData"></param>
+            <param name="Value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.DBToDateTimeD(System.Object)">
+            <summary>
+            数据库字段转化为布尔型
+            当转化失败将返回DateTime.Parse("1899-01-01")        
+            </summary>
+            <param name="DBData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.DBToDateTimeString(System.Object,System.String)">
+            <summary>
+            数据库字段转化为日期的字符串形式
+            当转化失败将以用户指定的默认值返回
+            </summary>
+            <param name="DBData"></param>
+            <param name="Default"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TF.Utils.TFConvert.DBToDateTimeStringD(System.Object)">
+            <summary>
+            数据库字段转化为日期的字符串形式
+            当转化失败将返回固定的"1899-01-01"
+            </summary>
+            <param name="DBData"></param>
+            <param name="DefaultValue"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,28 @@
+﻿<table border="1" style="text-align: center">
+    <tr>
+        <td align="center">
+            车型车号
+        </td>
+        <td>
+            提报日期
+        </td>
+        <td>
+            故障描述
+        </td>
+    </tr>
+    #set($i = 0) #foreach($lsx in $Data) #set($i =$i+ 1)
+    <tr>
+        #if ($i == 1)
+        <td rowspan="3">
+            $lsx.StrCheXing&nbsp;-&nbsp;$lsx.StrCheHao
+        </td>
+        #end
+        <td>
+            $lsx.PresenterDate
+        </td>
+        <td>
+            $lsx.Question
+        </td>
+    </tr>
+    #end
+</table>

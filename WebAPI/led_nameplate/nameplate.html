@@ -1,0 +1,451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+	唐山车间电子名牌
+</title>
+	<script type="text/javascript" src="jquery-1.8.3.js">
+	</script>
+
+	
+    
+<style type="text/css">
+
+div
+{
+    background-color:#E6E6E6;    
+    }    
+body
+{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-size: 12px;
+        font-family: "宋体";        
+    }
+
+
+#div-head
+{
+    text-align:center;
+	font-size:24px;
+	font-weight:bold;
+	color:White;		
+	background-color: #0066AE;
+	height:70px;		
+	line-height:3;		
+}
+.clear
+{
+    clear:both;
+    }
+.div-horizontalCenter
+{
+     
+    }
+.div-tm
+{
+    width:45px;
+    border:1px solid gray;
+    height:100px;
+    text-align:center;     
+    color:#2B2B2B;
+    float:left;
+    background-color:#E6E6E6;
+      
+    }    
+.div-tmHead
+{
+    margin:3px 0 0 0;    
+    text-align:center;
+    font-weight:bold;   
+    font-size:8px;
+    color:#2B2B2B;
+    }    
+.hr-post
+{
+    border-bottom:1px solid black;    
+    width:90%;
+      
+    }
+.span-tmName
+{
+    width:16px;
+    font-size:16px;
+    line-height:1.4;        
+    display:block;    
+    margin-left:auto;
+    margin-right:auto;     
+    }    
+.div-group
+{
+    float:left;
+    text-align:center;     
+    border:1px solid gray;   
+    height:353px;
+    }    
+.div-groupHead
+{
+    font-weight:bold;
+    font-size:14px;
+    background-color:Aqua;
+    border:1px solid gray;
+    }    
+table
+{
+    margin:0 0 0 0;
+    padding:0 0 0 0;
+    }    
+.div_viewgrp
+{
+    
+    }    
+</style>
+   
+    <script language="javascript" type="text/javascript">
+
+        var config;
+        $(document).ready(function () {
+            config = eval("(" + $("#tag_config").val() + ")");
+            
+            loadNameplates();
+
+        });
+
+        //布局干部名牌
+        function layOutGanbu(div_tag,data) {
+            var newTag = $("#div_tm_template").clone(true);
+
+            var tmHead = newTag.find(".div-tmHead");
+            if (tmHead != undefined) {
+                tmHead.text(data.number);
+            }
+
+            var tmName = newTag.find(".span-tmName");
+            if (tmName != undefined) {
+                tmName.text(data.name);
+            }
+
+            newTag.show();
+            div_tag.append(newTag);
+        }
+
+        //布局预备队列名牌
+        function layOutReady(div_tag, data) {
+
+            var tag_jlTitle = $("#div_tm_HTitle").clone(true);
+            var titleText = tag_jlTitle.find(".span-tmName");
+            titleText.text(data.jlName);
+            tag_jlTitle.show();
+            $(div_tag).append(tag_jlTitle);
+
+            $.each(data.dataArray, function (n, item) {
+
+                var newTag = $("#div_tm_template").clone(true);
+
+                setTmInfo(newTag, item);
+                               
+                newTag.show();
+                $(div_tag).append(newTag);
+            });
+            
+                                  
+        }
+
+        //布局非运转名牌
+        function layOutUnrun(div_tag, data) {
+            var tag_jlTitle = $("#div_tm_HTitle").clone(true);
+            var titleText = tag_jlTitle.find(".span-tmName");
+            titleText.text(data.jlName);
+            tag_jlTitle.show();
+            $(div_tag).append(tag_jlTitle);
+
+            $.each(data.dataArray, function (n, item) {
+
+                var tag_jlTitle = $("#div_tm_HTitle").clone(true);
+                var titleText = tag_jlTitle.find(".span-tmName");
+                titleText.text(item.leaveTypeName);
+                tag_jlTitle.show();
+                $(div_tag).append(tag_jlTitle);
+
+
+                $.each(item.tms, function (n, item_tm) {
+                    var newTag = $("#div_tm_template").clone(true);
+
+                    setTmInfo(newTag, item_tm);
+
+                    newTag.show();
+                    $(div_tag).append(newTag);
+
+                });
+                
+            });
+        }
+
+
+        function layOutOrderGrps() {
+
+        }
+
+        function layOutNamedGrps() {
+
+        }
+
+        function layOutTogetherGrps() { 
+
+        }
+        //布局机组名牌
+        function layOutGroup(div_tag, data) {
+
+//            var tag_jlTitle = $("#div_tm_HTitle").clone(true);
+//            var titleText = tag_jlTitle.find(".span-tmName");
+//            titleText.text(data.jlName);
+//            tag_jlTitle.show();
+//            $(div_tag).append(tag_jlTitle);
+
+            $.each(data.dataArray, function (n, item) {
+
+                switch (item.jlType) {
+                    //记名式      
+                    case 2:
+                        {
+                            break;
+                        }
+
+                        //轮乘   
+                    case 3:
+                        {
+                            layOutOrderGrps();
+                            var newTag = $("#div_grp_template").clone(true);
+                            $(newTag).find("newTag")
+                            setTmInfo(newTag, item);
+
+                            newTag.show();
+                            $(div_tag).append(newTag);
+
+                            break;
+                        }
+                        //包乘 
+                    case 4:
+                        {
+                            break;
+                        }
+                    default: break;
+                }
+
+
+            });
+        }
+
+
+        //加载名牌
+        function loadNameplates() {
+            $.ajax({
+                type: "get",
+                async: false,
+                cache: false,
+                url: "/AshxService/QueryProcess.ashx?DataType=TF.Runsafty.LCNameplate.GetWorkshopBoardsEx&Data={'WorkShopName':'唐山车间'}",
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $("#div_error").text(textStatus);
+                    $("#div_error").show();
+
+                },
+                success: function (input) {
+                    $("#div_error").hide();
+                    if (!(input)) {
+                        return;
+                    }
+
+
+                    if (input.result != 1) {
+                        $("#div_error").text(input.resultStr);
+                        return;
+                    }
+
+                    var data = input.data;
+
+                    if (data.ready) {
+                        $.each(data.ready,
+                                    function (n, value) {
+                                        value.tagType = "tt_ready";
+                                        layoutNameplates(value);
+
+                                    }
+                                )
+                    }
+
+                    if (data.ganbu) {
+                        $.each(data.ganbu,
+                                    function (n, value) {
+                                        value.tagType = "tt_ganbu";
+                                        layoutNameplates(value);
+
+                                    }
+                                )
+                    }
+                    if (data.unrun) {
+                        $.each(data.unrun,
+                                    function (n, value) {
+                                        value.tagType = "tt_unrun";
+                                        layoutNameplates(value);
+
+                                    }
+                                )
+                    }
+
+                    if (data.groups) {
+                        $.each(data.group,
+                                    function (n, value) {
+                                        value.tagType = "tt_group";
+                                        layoutNameplates(value);
+                                    }
+                                )
+                    }
+
+                }
+            });
+        }
+
+
+        //对名牌进行布局
+        function layoutNameplates(item) {
+            
+            $(".div_viewgrp").each(
+                            function (n, value) {                                                              
+                                var jlName = $(value).attr("jlName");
+                                if (!stringContains(jlName, item.jlName) && (jlName != "全部")) {
+                                    return;
+                                }
+
+                                var tagType = $(value).attr("tagType");
+                                if (!stringContains(tagType, item.tagType) && (tagType != "全部")) {
+                                    return;
+                                }
+
+                                switch (item.tagType) {
+                                    case "tt_ganbu":
+                                        {
+                                            layOutGanbu(value, item);
+                                            break;
+                                        }
+                                    case "tt_ready":
+                                        {
+                                            layOutReady(value, item);
+                                            break;
+                                        }
+                                    case "tt_unrun":
+                                        {
+                                            layOutUnrun(value, item);
+                                            break;
+                                        }
+                                    case "tt_group":
+                                        {
+                                            layOutGroup(value, item);
+                                            break;
+                                        }
+                                    default: break;
+
+                                }
+                            }
+                        )
+        }
+
+        //拆分字符串为数组，并判断是否包含元素
+        function stringContains(value, item) {
+            var strArray = new Array();
+            strArray = value.split(",");
+
+            for (i = 0; i < strArray.length; i++) {
+                if (strArray[i] == item) { 
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        //设置乘务员工号、姓名
+        function setTmInfo(div_tag,tm) {
+            var tmHead = $(div_tag).find(".div-tmHead");
+            if (tmHead != undefined) {
+                tmHead.text(tm.tmNumber);
+            }
+
+            var tmName = $(div_tag).find(".span-tmName");
+            if (tmName != undefined) {
+                tmName.text(tm.tmName);
+            }
+
+        }
+
+    </script>
+</head>
+<body>  
+    <div id="div_error" style="display:none"></div>      
+    <div id="div_main">        
+        <div class="div_viewgrp" tagType="tt_ganbu" jlName="全部"></div>
+        <div class="clear"></div>
+        
+        <div class="div_viewgrp" tagType="tt_ready" jlName="全部">
+            <div class="div-tm" style="background-color:#326FC9">
+                <span class="span-tmName" style="width:16px;font-size:16px;color:black; font-weight:bold; line-height:1.2">
+                预备
+                </span> 
+            </div>
+        </div>
+
+        <div class="div_viewgrp" tagType="tt_unrun" jlName="混跑">
+            <div class="div-tm" style="background-color:#326FC9">
+                <span class="span-tmName" style="width:16px;font-size:16px;color:black; font-weight:bold; line-height:1.2">
+                非运转
+                </span> 
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="div_viewgrp" tagType="tt_group" jlName="混跑" grpState="正常,计划,出勤">
+            <div class="div-group" style="width:45px">
+                <span class="span-tmName" style="width:16px;font-size:16px;color:black; font-weight:bold; line-height:1.2">
+                待乘
+                </span> 
+            </div>
+        </div>
+        <div class="div_viewgrp" tagType="tt_group" jlName="混跑" grpState="计划,出勤">
+            <div class="div-group" style="width:45px">
+                <span class="span-tmName" style="width:16px;font-size:16px;color:black; font-weight:bold; line-height:1.2">
+                出勤
+                </span> 
+            </div>
+        </div>
+        <div class="div_viewgrp" tagType="tt_group" jlName="临客" grpState="正常,计划,出勤"></div>
+        <div class="div_viewgrp" tagType="tt_group" jlName="唐山客车交路" grpState="正常,计划,出勤"></div>
+        
+    </div>
+
+    <div id="div_tm_template" class="div-tm" style="display:none">            
+		<div class="div-tmHead"></div>
+		<hr class="hr-post"/>
+		<span class="span-tmName"></span>    
+	</div>
+
+
+    <div id="div_grp_template" style=" display:none">
+        <div class="div-tm">            
+		    <div class="div-tmHead"></div>
+		    <hr class="hr-post"/>
+		    <span class="span-tmName"></span>    
+	    </div>
+    </div>
+    
+    <div id="div_tm_HTitle" class="div-tm" 
+        style="display:none; overflow:hidden; background-color:#8F9FF8">
+        <span class="span-tmName" style="width:16px;font-size:16px;color:black; font-weight:bold; line-height:1.2"></span>    
+    </div>    
+
+    <div id="div_grp_HTitle" class="div_grp_template" style="display:none;overflow:hidden"></div>
+
+    <input id="tag_config" type="hidden" value="{'name':'Mike','sex':'女','age':'29'}"/>
+</body>
+
+
+	
+</html>

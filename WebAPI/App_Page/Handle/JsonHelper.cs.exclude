@@ -1,0 +1,43 @@
+﻿using System;
+using System.Data;
+using System.Configuration;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Runtime.Serialization.Json;
+using System.ServiceModel.Web;
+using System.IO;
+using System.Text;
+using System.Web.Script.Serialization;
+
+namespace TF.RunSaftyAPI.App_Page.Handle
+{
+    public static class JsonHelper
+    {
+        public static string ToJsJson(this object item)
+        {
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(item.GetType());
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                serializer.WriteObject(ms, item);
+                StringBuilder sb = new StringBuilder();
+                sb.Append(Encoding.UTF8.GetString(ms.ToArray()));
+                return sb.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Json反序列化,用于接收客户端Json后生成对应的对象
+        /// </summary>
+        public static T FromJsonTo<T>(this string jsonString)
+        {
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(T));
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
+            T jsonObject = (T)ser.ReadObject(ms);
+            ms.Close();
+
+            return jsonObject;
+        }
+    }
+}

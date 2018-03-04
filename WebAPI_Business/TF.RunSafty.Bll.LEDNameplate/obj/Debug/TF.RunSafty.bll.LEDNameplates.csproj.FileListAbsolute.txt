@@ -1,0 +1,14 @@
+F:\北京铁路局运安系统\运安接口20160831\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\bin\Debug\TF.RunSafty.Bll.LEDNameplates.dll
+F:\北京铁路局运安系统\运安接口20160831\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\bin\Debug\TF.RunSafty.Bll.LEDNameplates.pdb
+F:\北京铁路局运安系统\运安接口20160831\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\bin\Debug\Newtonsoft.Json.dll
+F:\北京铁路局运安系统\运安接口20160831\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\bin\Debug\ThinkFreely.DBUtility.dll
+F:\北京铁路局运安系统\运安接口20160831\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\obj\Debug\TF.RunSafty.Bll.LEDNameplates.dll
+F:\北京铁路局运安系统\运安接口20160831\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\obj\Debug\TF.RunSafty.Bll.LEDNameplates.pdb
+F:\北京铁路局运安系统\运安接口20160831\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\obj\Debug\TF.RunSafty.bll.LEDNameplates.csprojResolveAssemblyReference.cache
+E:\项目\运安项目\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\bin\Debug\TF.RunSafty.Bll.LEDNameplates.dll
+E:\项目\运安项目\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\bin\Debug\TF.RunSafty.Bll.LEDNameplates.pdb
+E:\项目\运安项目\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\bin\Debug\Newtonsoft.Json.dll
+E:\项目\运安项目\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\bin\Debug\ThinkFreely.DBUtility.dll
+E:\项目\运安项目\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\obj\Debug\TF.RunSafty.Bll.LEDNameplates.dll
+E:\项目\运安项目\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\obj\Debug\TF.RunSafty.Bll.LEDNameplates.pdb
+E:\项目\运安项目\运安接口2\WebAPI_Business\TF.RunSafty.Bll.LEDNameplate\obj\Debug\TF.RunSafty.bll.LEDNameplates.csprojResolveAssemblyReference.cache

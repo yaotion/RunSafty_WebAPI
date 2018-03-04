@@ -1,0 +1,71 @@
+﻿using System;
+using System.Data;
+using System.Configuration;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using ThinkFreely.DBUtility;
+using System.Data.SqlClient;
+
+namespace ThinkFreely.RunSafty
+{
+    /// <summary>
+    ///AttentionMsg 的摘要说明
+    /// </summary>
+    public class AttentionMsg
+    {
+        #region 属性
+        public int msgID = 0;
+        public int msgType = 0;
+        public string param = "";
+        public int clientID = 0;
+        #endregion 属性
+
+        #region 构造函数
+        public AttentionMsg()
+        {
+            //
+            //TODO: 在此处添加构造函数逻辑
+            //
+        }
+        
+        #endregion 构造函数
+
+        #region 增删改
+        public bool Add()
+        {
+            string strSql = "insert into TAB_Msg_Mesage (msgType,param,clientID) values (@msgType,@param,@clientID)";
+            SqlParameter[] sqlParams = {
+                                           new SqlParameter("param",param),
+                                           new SqlParameter("msgType",msgType),
+                                           new SqlParameter("clientID",clientID)
+                                       };
+            return SqlHelper.ExecuteNonQuery(SqlHelper.ConnString,CommandType.Text,strSql,sqlParams)> 0;
+        }
+        public static bool Delete(string msgID)
+        {
+            string strSql = "delete TAB_Msg_Mesage where msgID = @msgID";
+            SqlParameter[] sqlParams = {
+                                           new SqlParameter("msgID",msgID)
+                                       };
+            return SqlHelper.ExecuteNonQuery(SqlHelper.ConnString, CommandType.Text, strSql,sqlParams) > 0;
+        }
+        #endregion 增删改
+
+        public static DataTable GetAllAttentionMsg(int id,int maxCount,int msgID)
+        {
+            maxCount = maxCount == 0 ? 10 : maxCount;
+            string strSql = "select top " + maxCount + " * from TAB_Msg_Mesage where clientID=@clientID and msgID > @msgID order by msgID";
+            SqlParameter[] sqlParams = {
+                                           new SqlParameter("clientID",id),
+                                           new SqlParameter("msgID",msgID)
+                                       };
+            return SqlHelper.ExecuteDataset(SqlHelper.ConnString, CommandType.Text, strSql, sqlParams).Tables[0];
+        }
+    }
+}

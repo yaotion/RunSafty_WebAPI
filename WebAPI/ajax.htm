@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type: "get",
+                timeout: 2000,
+                cache: false,
+                url: "IsAccess.ashx",
+                dataType: "json",
+                success: function (d) {
+                    if (d.nResult == 0) {
+                        $("#Access").append("<h2>&nbsp;&nbsp;数据库连接成功</h2>")
+                    } else {
+                        $("#NoAccess").append("<h2>&nbsp;&nbsp;2，程序发生异常,请检查数据库连接设置</h2>")
+                    }
+                },
+                error: function (d) {
+                    $("#NoAccess").append("<h2>&nbsp;&nbsp;2，程序发生异常,请检查网络或者数据库连接设置</h2>")
+                }
+            })
+        });
+
+        $( function(){
+        
+        })
+
+
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div style="text-align: left; width: 100%">
+        <span style="color: Green; font-size: 18px;" id="AccessJieKou"></span><span style="color: Red;
+            font-size: 18px;" id="NoAccess"></span><span style="color: Green; font-size: 18px;"
+                id="Access"></span>
+    </div>
+    </form>
+</body>
+</html>

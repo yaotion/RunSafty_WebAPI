@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        #MainReads
+        {
+            height: 580px;
+            width: 880px;
+        }
+    </style>
+</head>
+<body style=" overflow:scroll">
+   <span id="MainReads"></span>
+</body>
+<script type="text/javascript">
+    var parentText = window.opener.document.all.spResult.innerHTML;
+    document.getElementById("MainReads").innerHTML = parentText;
+</script>
+</html>

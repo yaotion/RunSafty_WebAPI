@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{13DF8A21-F3F2-440E-A70A-9A9DB891F796}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TF.RunSafty.NameGroup</RootNamespace>
+    <AssemblyName>TF.RunSafty.bll.NamePlate</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/TF.RunSafty.bll.NamePlate/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThinkFreely.DBUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\ThinkFreely.DBUtility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="01实体\MDAllMingPai.cs" />
+    <Compile Include="01实体\MDBoardChangeLog.cs" />
+    <Compile Include="01实体\MDGroup.cs" />
+    <Compile Include="01实体\MDJiaolu.cs" />
+    <Compile Include="01实体\MDJiaoluArray.cs" />
+    <Compile Include="01实体\MDLinShi.cs" />
+    <Compile Include="01实体\MDLeave.cs" />
+    <Compile Include="01实体\MDLog.cs" />
+    <Compile Include="01实体\MDNameBoard.cs" />
+    <Compile Include="01实体\MDNamedJiaolu.cs" />
+    <Compile Include="01实体\MDOrderGroup.cs" />
+    <Compile Include="01实体\MDTogetherTrain.cs" />
+    <Compile Include="02持久化\TFParse.cs" />
+    <Compile Include="03数据库操作\DBAllMingPai.cs" />
+    <Compile Include="03数据库操作\DBChangeTM.cs" />
+    <Compile Include="03数据库操作\DBCheckCanAdd.cs" />
+    <Compile Include="03数据库操作\DBNameBoard.cs" />
+    <Compile Include="03数据库操作\DBNamedGroup.cs" />
+    <Compile Include="03数据库操作\DBNamedGroupV2.cs" />
+    <Compile Include="03数据库操作\DBOrderGP.cs" />
+    <Compile Include="03数据库操作\DBTx.cs" />
+    <Compile Include="04逻辑层\GetPositionOfTM.cs" />
+    <Compile Include="04逻辑层\LCAllMingPai.cs" />
+    <Compile Include="04逻辑层\LCNamedGroupV2.cs" />
+    <Compile Include="04逻辑层\LCOrderGP.cs" />
+    <Compile Include="05其它\GroupBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="04逻辑层\LCGroup.cs" />
+    <Compile Include="04逻辑层\LCNamedGroup.cs" />
+    <Compile Include="04逻辑层\LCOrderGroup.cs" />
+    <Compile Include="02持久化\PSNameBoard.cs" />
+    <Compile Include="04逻辑层\LCTogetherGroup.cs" />
+    <Compile Include="04逻辑层\NameGroup.cs" />
+    <Compile Include="04逻辑层\LCTX.cs" />
+    <Compile Include="IFNameplate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="04逻辑层\LCBoardTrainman.cs" />
+    <Compile Include="03数据库操作\DBTuiQinTimeLog.cs" />
+    <Compile Include="名牌操作权限\DBNameplateLimit.cs" />
+    <Compile Include="名牌操作权限\LCNameplateLimit.cs" />
+    <Compile Include="名牌操作权限\NameplateLimit.cs" />
+    <Compile Include="本段休息卡控\DBNPControlRest.cs" />
+    <Compile Include="本段休息卡控\IFNameGroup.cs" />
+    <Compile Include="本段休息卡控\LCNPControlRest.cs" />
+    <Compile Include="本段休息卡控\MDNPControlRest.cs" />
+    <Compile Include="预备队列\DBPrepareTMOrder.cs" />
+    <Compile Include="预备队列\LCPrepareTMOrder.cs" />
+    <Compile Include="预备队列\MDPrepareTMOrder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonUtility\CommonUtility.csproj">
+      <Project>{AEB4AAD5-6D16-4138-8427-00F6E960D0DB}</Project>
+      <Name>CommonUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TF.Utils\TF.Utils.csproj">
+      <Project>{37EB66BC-6CF1-453F-A5A1-7AF2E6FC6FC9}</Project>
+      <Name>TF.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy /V "$(TargetDir)$(TargetName).dll" ""$(SolutionDir)\WebAPI\Bin"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

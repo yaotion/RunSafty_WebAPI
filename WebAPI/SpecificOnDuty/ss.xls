@@ -1,0 +1,276 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <style type="text/css">
+        body, table
+        {
+            font-size: 14px;
+            font-family:仿宋;
+        }
+        table
+        {
+            border-collapse: collapse;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 140%;
+        }
+        
+        
+.Juleft
+	{
+	mso-style-parent:style0;
+	text-align:left;
+	white-space:normal;
+	mso-pattern:auto none;
+	background:#FFFFFF;
+	font-size:10.5pt;
+	font-family:仿宋;
+	mso-font-charset:134;
+	}
+        
+    </style>
+</head>
+<body style="background-color: White;text-align: center;
+    padding: 0px">
+    <table style=" width:auto; height:auto; border:solid 1px #000"><tr><td>
+    <table border="0" style="width: 100%; margin-top: 0px; border: solid 0px red; text-align:center">
+        <tr>
+            <td valign="middle" align="center">
+                <div style=" height:40px;"><b style="font-size: 20px; font-family:宋体;">机车故障重点信息提示卡</b></div>
+            </td>
+        </tr>
+    </table>
+<div style='border:solid 0px #000;padding:5px;'><table style='width:100%; font-size:14px;'><tr><td class='Juleft' style='font-weight:400;line-height:1.5; '>一、出勤时间：17年08月28日14:46</td></tr><tr><td class='Juleft' style='font-weight:400;line-height:1.5;'>二、出勤机班：</td></tr><tr><td  class='Juleft'  style='font-weight:400;line-height:1.5;'>&nbsp;司机:陈宝印&nbsp;&nbsp;副(换乘)司机:刘西洋&nbsp;&nbsp;学员1:无&nbsp;&nbsp;学员2:无&nbsp;</td></tr><tr><td align='left' class='Juleft' style='font-weight:400;line-height:1.5; '>三、担当区段&nbsp;唐山东-山海关(客)&nbsp;机车：HXD2B-0001&nbsp;车次：4535次</td></tr><tr><td class='Juleft'>四、机车状态信息提示卡</td></tr><tr><td align='left' ><table border="1" style="text-align: center; width:98%">
+    <tr>
+        <td align="center">
+            <b>机车号</b>
+        </td>
+        <td>
+            <b>前期重点故障信息</b>
+        </td>
+        <td>
+            <b>回段后施修情况</b>
+        </td>
+        <td>
+            <b>运行中需重点注意事项</b>
+        </td>
+        <td>
+            <b>是否为重点活</b>
+        </td>
+        <td>
+            <b>日期</b>
+        </td>
+      
+    </tr>
+         <tr>
+                <td rowspan="12">
+            HXD2B&nbsp;-&nbsp;0001
+        </td>
+                <td>
+            8月2日运行中出现无压无流故障
+        </td>
+        <td>
+            更换1C接触器
+        </td>
+        <td>
+            运行中关注是否存在无压无流情况1
+        </td>
+        <td>
+            重点
+        </td>
+         <td>
+            2017-08-22
+        </td>
+    </tr>
+        <tr>
+                <td>
+            8月2日FIP网络线路故障
+        </td>
+        <td>
+            更换11
+        </td>
+        <td>
+            运行中关注是否存在无压无流情况2
+        </td>
+        <td>
+            惯性
+        </td>
+         <td>
+            2017-08-22
+        </td>
+    </tr>
+        <tr>
+                <td>
+            8月2日辅变一24v电源故障
+        </td>
+        <td>
+            更换22
+        </td>
+        <td>
+            运行中关注是否存在无压无流3
+        </td>
+        <td>
+            惯性
+        </td>
+         <td>
+            2017-08-22
+        </td>
+    </tr>
+        <tr>
+                <td>
+            8月2日辅变一24v电源故障
+        </td>
+        <td>
+            更换22
+        </td>
+        <td>
+            运行中关注是否存在无压无流3
+        </td>
+        <td>
+            
+        </td>
+         <td>
+            2017-08-22
+        </td>
+    </tr>
+        <tr>
+                <td>
+            8月2日运行中出现无压无流故障
+        </td>
+        <td>
+            更换1C接触器
+        </td>
+        <td>
+            运行中关注是否存在无压无流情况1
+        </td>
+        <td>
+            
+        </td>
+         <td>
+            2017-08-22
+        </td>
+    </tr>
+        <tr>
+                <td>
+            8月2日FIP网络线路故障
+        </td>
+        <td>
+            更换11
+        </td>
+        <td>
+            运行中关注是否存在无压无流情况2
+        </td>
+        <td>
+            
+        </td>
+         <td>
+            2017-08-22
+        </td>
+    </tr>
+        <tr>
+                <td>
+            8月2日辅变一24v电源故障
+        </td>
+        <td>
+            更换22
+        </td>
+        <td>
+            运行中关注是否存在无压无流3
+        </td>
+        <td>
+            
+        </td>
+         <td>
+            2017-08-22
+        </td>
+    </tr>
+        <tr>
+                <td>
+            8月2日辅变一24v电源故障
+        </td>
+        <td>
+            更换22
+        </td>
+        <td>
+            运行中关注是否存在无压无流3
+        </td>
+        <td>
+            
+        </td>
+         <td>
+            2017-08-22
+        </td>
+    </tr>
+        <tr>
+                <td>
+            8月2日运行中出现无压无流故障
+        </td>
+        <td>
+            更换1C接触器
+        </td>
+        <td>
+            运行中关注是否存在无压无流情况1
+        </td>
+        <td>
+            
+        </td>
+         <td>
+            2017-08-22
+        </td>
+    </tr>
+        <tr>
+                <td>
+            8月2日FIP网络线路故障
+        </td>
+        <td>
+            更换11
+        </td>
+        <td>
+            运行中关注是否存在无压无流情况2
+        </td>
+        <td>
+            
+        </td>
+         <td>
+            2017-08-22
+        </td>
+    </tr>
+        <tr>
+                <td>
+            8月2日辅变一24v电源故障
+        </td>
+        <td>
+            更换22
+        </td>
+        <td>
+            运行中关注是否存在无压无流3
+        </td>
+        <td>
+            
+        </td>
+         <td>
+            2017-08-22
+        </td>
+    </tr>
+        <tr>
+                <td>
+            8月2日辅变一24v电源故障
+        </td>
+        <td>
+            更换22
+        </td>
+        <td>
+            运行中关注是否存在无压无流3
+        </td>
+        <td>
+            
+        </td>
+         <td>
+            2017-08-22
+        </td>
+    </tr>
+    </table>
+<table style=" line-height:3"> <tr><td>出勤调度员:</td><td>签发日期及时间:</td><td>机车乘务员:</td><td>退勤调度员:</td><td>收回日期及时间：</td></tr></table>
+</td></tr></table></div></td></tr></table></body></html>

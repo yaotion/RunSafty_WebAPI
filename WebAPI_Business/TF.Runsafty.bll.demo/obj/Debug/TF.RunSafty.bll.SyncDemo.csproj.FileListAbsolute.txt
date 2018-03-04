@@ -1,0 +1,10 @@
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.SyncDemo\bin\Debug\TF.RunSafty.bll.SyncDemo.dll
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.SyncDemo\bin\Debug\TF.RunSafty.bll.SyncDemo.pdb
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.SyncDemo\bin\Debug\Newtonsoft.Json.dll
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.SyncDemo\bin\Debug\TF.RunSafty.CommonUtility.dll
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.SyncDemo\bin\Debug\ThinkFreely.DBUtility.dll
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.SyncDemo\bin\Debug\NVelocity.dll
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.SyncDemo\bin\Debug\TF.RunSafty.CommonUtility.pdb
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.SyncDemo\obj\Debug\ResolveAssemblyReference.cache
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.SyncDemo\obj\Debug\TF.RunSafty.bll.SyncDemo.dll
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.SyncDemo\obj\Debug\TF.RunSafty.bll.SyncDemo.pdb

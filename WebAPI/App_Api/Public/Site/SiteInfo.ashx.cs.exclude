@@ -1,0 +1,133 @@
+﻿using System;
+using System.Collections;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using System.Xml.Linq;
+using System.Data.SqlClient;
+using System.Text;
+using ThinkFreely.DBUtility;
+using System.Configuration;
+using System.Reflection;
+using System.IO;
+
+namespace TF.RunSaftyAPI.App_Api.Public.Site
+{
+    /// <summary>
+    /// 1.3	获取客户端基础信息
+    /// 
+    ///   2014-06  
+    ///   by Mr.Tang
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    public class SiteInfo : IHttpHandler
+    {
+        string sRequest = "";
+        string sWhere = "";
+        string strsiteID = "";
+        string strcid = "";
+
+        public void ProcessRequest(HttpContext context)
+        {
+            try
+            {
+                string strQuery = context.Request.QueryString.ToString().ToLower();
+                if (strQuery == "help" || strQuery == "h") //帮助
+                {
+                    sRequest += gotoHelp();
+                    return;
+                }
+                //cnum=xxx	第一次siteNumber：客户端编号
+                //siteID=xxx	siteID：客户端ID
+                if (!string.IsNullOrEmpty(context.Request["siteID"]))    //客户端ID(siteID) -- 优先
+                {
+                    strsiteID = context.Request["cid"];
+                    sWhere = "Where (strSiteGUID = '" + strsiteID + "')";
+                }
+                else
+                    if (!string.IsNullOrEmpty(context.Request["cnum"]))    //客户端编号(siteIP)
+                    {
+                        strcid = context.Request["cnum"];
+                        sWhere = "Where (strSiteIP  = '" + strcid + "')";
+                    }
+                
+                sRequest += gotoSiteInfo();
+            }
+            finally
+            {
+                context.Response.ContentType = "text/plain";
+                context.Response.Write(sRequest);
+            }
+        }
+
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 1.3	获取客户端基础信息
+        /// </summary>
+        /// <param name="hct"></param>
+        /// <returns></returns>
+        private string gotoSiteInfo()
+        {
+            string strSql = "SELECT strSiteName, nSiteJob, strSiteGUID as cnum, strSiteIP FROM TAB_Base_Site "+sWhere;
+            DataTable dt = SqlHelper.ExecuteDataset(SqlHelper.ConnString, CommandType.Text, strSql).Tables[0];
+            if (dt.Rows.Count < 1)
+                return "{\"result\":1,\"resultStr\":\"未找到编号为" + strsiteID + strcid + "的客户端信息\"}";
+
+            string strSiteIP = dt.Rows[0]["strSiteIP"].ToString();
+            string strSiteName = dt.Rows[0]["strSiteName"].ToString();
+            string strcnum = dt.Rows[0]["cnum"].ToString();
+            string strnSiteJob = dt.Rows[0]["nSiteJob"].ToString();
+
+            string strValue = dt.Rows[0]["cnum"].ToString();
+            string strJson = "{\"result\":0,\"resultStr\":\"返回成功\",\"siteIP\":\""+
+                strSiteIP + "\",\"siteName\":\"" +
+                strSiteName + "\",\"siteID\":\"" +
+                strcnum + "\",\"sitejob\":\"" +
+                strnSiteJob + "\"}";
+            return strJson;
+        }
+
+        /// <summary>
+        /// 帮助文档
+        /// </summary>
+        /// <returns></returns>
+        private string gotoHelp()
+        {
+            string strHelp = @"1.3	获取客户端基础信息
+ 调用参数
+     参数格式
+        cnum=xxx
+
+     参数说明
+        cnum：为客户端编号
+
+ 返回参数
+     参数格式
+        {'result':0,'resultStr':'返回成功','siteIP','','siteName':'','siteID':'','sitejob'}
+
+        {'result':1,'resultStr':'返回错误'}
+
+     参数说明
+        siteName：客户端名称
+        sitejob	：客户端岗位
+        siteID	：客户端ID
+        siteIP	：客户端编号
+";
+            FileInfo fi = new FileInfo(HttpContext.Current.Request.PhysicalPath);
+            strHelp += "\r\n--------";
+            strHelp += "\r\n创建时间:" + fi.CreationTime.ToString();
+            strHelp += "\r\n最后更新:" + fi.LastWriteTime.ToString();
+            return strHelp;
+        }
+    }
+}

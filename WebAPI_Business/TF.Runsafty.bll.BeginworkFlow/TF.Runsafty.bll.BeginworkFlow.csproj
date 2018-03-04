@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BAFC60F-3D3F-4A77-ABA0-613E969BABE7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TF.RunSafty.BeginworkFlow</RootNamespace>
+    <AssemblyName>TF.Runsafty.bll.BeginworkFlow</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThinkFreely.DBUtility">
+      <HintPath>..\..\Libs\ThinkFreely.DBUtility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBBeginworkFlow.cs" />
+    <Compile Include="DBUtils\CheckCard.cs" />
+    <Compile Include="DBUtils\DBDrink.cs" />
+    <Compile Include="DBUtils\DBPlan_Beginwork_Flow.cs" />
+    <Compile Include="DBUtils\DBPlan_Beginwork_Rule.cs" />
+    <Compile Include="DBUtils\DBPlan_Beginwork_StepData.cs" />
+    <Compile Include="DBUtils\DBPlan_Beginwork_StepDef.cs" />
+    <Compile Include="DBUtils\DBPlan_Beginwork_StepIndex.cs" />
+    <Compile Include="DBUtils\DBPlan_Beginwork_StepResult.cs" />
+    <Compile Include="DBUtils\DBZhuanChu.cs" />
+    <Compile Include="DBUtils\UpdataJiMing.cs" />
+    <Compile Include="DBUtils\WorkOutPlanList.cs" />
+    <Compile Include="LCBeginworkFlow.cs" />
+    <Compile Include="MDBeginworkFlow.cs" />
+    <Compile Include="Model\Model.cs" />
+    <Compile Include="Model\Plan_Beginwork_Flow.cs" />
+    <Compile Include="Model\Plan_Beginwork_Rule.cs" />
+    <Compile Include="Model\Plan_Beginwork_StepData.cs" />
+    <Compile Include="Model\Plan_Beginwork_StepDef.cs" />
+    <Compile Include="Model\Plan_Beginwork_StepIndex.cs" />
+    <Compile Include="Model\Plan_Beginwork_StepResult.cs" />
+    <Compile Include="Model\RunRecordFileDetail.cs" />
+    <Compile Include="Model\RunRecordFileMain.cs" />
+    <Compile Include="Model\WorkOutPlanList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonUtility\CommonUtility.csproj">
+      <Project>{AEB4AAD5-6D16-4138-8427-00F6E960D0DB}</Project>
+      <Name>CommonUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Entry\Entry.csproj">
+      <Project>{74CA0ECB-3D0E-492C-B6F2-CAC939E8AF8C}</Project>
+      <Name>Entry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TF.Runsafty.bll.DrinkLogic\TF.Runsafty.bll.DrinkLogic.csproj">
+      <Project>{8752B3DF-8DA3-4B8E-AE63-15A3BEE7BEBE}</Project>
+      <Name>TF.Runsafty.bll.DrinkLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /V "$(TargetDir)$(TargetName).dll" ""$(SolutionDir)\WebAPI\Bin"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

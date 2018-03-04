@@ -1,0 +1,15 @@
+F:\北京铁路局运安系统\磊磊\WebAPI_Business\TF.RunSafty.bll.WorkFlow\bin\Debug\TF.RunSafty.bll.WorkFlow.dll
+F:\北京铁路局运安系统\磊磊\WebAPI_Business\TF.RunSafty.bll.WorkFlow\bin\Debug\TF.RunSafty.bll.WorkFlow.pdb
+F:\北京铁路局运安系统\磊磊\WebAPI_Business\TF.RunSafty.bll.WorkFlow\bin\Debug\Newtonsoft.Json.dll
+F:\北京铁路局运安系统\磊磊\WebAPI_Business\TF.RunSafty.bll.WorkFlow\obj\Debug\TF.RunSafty.bll.WorkFlow.dll
+F:\北京铁路局运安系统\磊磊\WebAPI_Business\TF.RunSafty.bll.WorkFlow\obj\Debug\TF.RunSafty.bll.WorkFlow.pdb
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.WorkFlow\obj\Debug\ResolveAssemblyReference.cache
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.WorkFlow\obj\Debug\TF.RunSafty.bll.WorkFlow.dll
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.WorkFlow\obj\Debug\TF.RunSafty.bll.WorkFlow.pdb
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.WorkFlow\bin\Debug\TF.RunSafty.bll.WorkFlow.dll
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.WorkFlow\bin\Debug\TF.RunSafty.bll.WorkFlow.pdb
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.WorkFlow\bin\Debug\Newtonsoft.Json.dll
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.WorkFlow\bin\Debug\TF.RunSafty.CommonUtility.dll
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.WorkFlow\bin\Debug\ThinkFreely.DBUtility.dll
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.WorkFlow\bin\Debug\NVelocity.dll
+D:\工作\机务运用安全管理系统\02_开发\01_源代码\基线源码\web\WebAPI_Business\TF.RunSafty.bll.WorkFlow\bin\Debug\TF.RunSafty.CommonUtility.pdb
